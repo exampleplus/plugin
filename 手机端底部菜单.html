@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>购物车结算</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="renderer" content="webkit">
+  <!--<![endif]-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <style>
+  /*footer am-menu*/
+
+.am-menu {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #efefef;
+  text-align: center;
+  height: 54px;
+  overflow: hidden;
+  z-index: 98;
+  border-top: 1px solid #ddd;
+}
+
+.am-menu-column {
+  width: 25%;
+  float: left;
+  font-size: 1.4rem;
+}
+.am-menu-column i {
+  font-size: 2.2rem;
+  height: 30px;
+  display: block;
+  overflow: hidden;
+}
+/*new footer*/
+/*因为都是用的字体图标可能显示不出来，但是字体颜色会有变化*/
+.index i:before {
+  content: "\e602";
+  color: #999;
+}
+.explore i:before {
+  content: "\e607";
+  color: #999;
+}
+.life i:before {
+  content: "\e600";
+  color: #999;
+}
+.my i:before {
+  content: "\e605";
+  color: #999;
+}
+.index-active i:after {
+  content: "\e603";
+  color: #32B5E5;
+}
+.explore-active i:after {
+  content: "\e608";
+  color: #32B5E5;
+}
+.life-active i:after {
+  content: "\e601";
+  color: #32B5E5;
+}
+.my-active i:after {
+  content: "\e606";
+  color: #32B5E5;
+}
+.index a span,
+.explore a span,
+.life a span,
+.my a span {
+  display: block;
+  color: #999;
+}
+.index-active a span,
+.explore-active a span,
+.life-active a span,
+.my-active a span {
+  display: block;
+  color: #32b4e5;
+}
+  </style>
+  </head>
+<body>
+<footer class="am-menu am-cf">
+    <div class="am-menu-column index" id="index">
+      <a href="http://ec.i7i5.cn/">
+        <i class="iconfont-x"></i>
+        <span>首页</span>
+      </a>
+    </div>
+    <div class="am-menu-column explore" id="explore">
+      <a href="http://ec.i7i5.cn/Index/Index/explore">
+        <i class="iconfont-x "></i>
+        <span>逛逛</span>
+      </a>
+    </div>
+    <div class="am-menu-column life" id="life">
+      <a href="http://ec.i7i5.cn/Life">
+        <i class="iconfont-x "></i>
+        <span>生活</span>
+      </a>
+    </div>
+    <div class="am-menu-column my" id="my">
+      <a href="http://ec.i7i5.cn/User">
+        <i class="iconfont-x "></i>
+        <span>我的</span>
+      </a>
+    </div>
+  </footer>
+  <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+  <script>
+$(".am-menu-column").each(function() { //迭代div
+    var perch = $(this).attr("id"); //获取当前div的id
+      if(perch == "index"){ //如果id是index
+        if ($("#index").find("a").attr("href") == String(window.location)){   //这个地方也可以用window.location.pathname 那么超链接href的地址就可以改为/index了
+
+//如果id=index下面的超链接路径和当前页面的路径一致  (window.location绝对路径)
+//设置或获取对象指定的文件名或路径。
+//window.location.pathname
+//例：http://localhost:8086/topic/index?topicId=361
+//alert(window.location.pathname); 则输出：/topic/index
+
+
+          $("#index").removeClass("index"); //清除当前的灰色的图标class
+          $("#index").addClass("index-active");//添加彩色的图标的class
+        } else {
+          $("#index").addClass("index"); // else添加彩色的图标的class
+          $("#index").removeClass("index-active");// 清除当前的灰色的图标class
+        }
+      }else if(perch == "explore"){ //下面的同理
+        if ($("#explore").find("a").attr("href") == String(window.location)){
+          $("#explore").removeClass("explore");
+          $("#explore").addClass("explore-active");
+        } else {
+          $("#explore").addClass("explore");
+          $("#explore").removeClass("explore-active");
+        }
+      }else if(perch == "life"){
+        if ($("#life").find("a").attr("href") == String(window.location)){
+          $("#life").removeClass("life");
+          $("#life").addClass("life-active");
+        } else {
+          $("#life").addClass("life");
+          $("#life").removeClass("life-active");
+        }
+      }else if(perch == "my"){
+        if ($("#my").find("a").attr("href") == String(window.location)){
+          $("#my").removeClass("my");
+          $("#my").addClass("my-active");
+        } else {
+          $("#my").addClass("my");
+          $("#my").removeClass("my-active");
+        }
+      }   
+  })
+
+    </script>
+</body>
+</html>
